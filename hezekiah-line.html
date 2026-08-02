@@ -48,12 +48,14 @@
   .pic svg { width:100%; height:auto; display:block; }
 
   svg text { font-family:'Saira Condensed', Arial, sans-serif; }
-  .nm     { font-weight:700; font-size:24px; fill:#f1e9d6; letter-spacing:.08em; text-transform:uppercase; }
-  .nm-g   { font-weight:700; font-size:28px; fill:#c9a24b; letter-spacing:.08em; text-transform:uppercase; }
-  .nm-j   { font-weight:700; font-size:34px; fill:#c9a24b; letter-spacing:.1em; text-transform:uppercase; }
-  .sub    { font-family:'Inter', Arial, sans-serif; font-size:13.5px; fill:#c9c0aa; }
-  .subg   { font-family:'Inter', Arial, sans-serif; font-weight:600; font-size:13.5px; fill:#c9a24b; }
+  .nm     { font-weight:600; font-size:17px; fill:#f1e9d6; letter-spacing:.06em; text-transform:uppercase; }
+  .nm-md  { font-weight:700; font-size:22px; fill:#f1e9d6; letter-spacing:.07em; text-transform:uppercase; }
+  .nm-g   { font-weight:700; font-size:27px; fill:#c9a24b; letter-spacing:.08em; text-transform:uppercase; }
+  .nm-j   { font-weight:700; font-size:33px; fill:#c9a24b; letter-spacing:.1em; text-transform:uppercase; }
+  .sub    { font-family:'Inter', Arial, sans-serif; font-size:13px; fill:#c9c0aa; }
+  .subg   { font-family:'Inter', Arial, sans-serif; font-weight:600; font-size:13px; fill:#c9a24b; }
   .big    { font-weight:700; font-size:21px; fill:#f1e9d6; letter-spacing:.06em; text-transform:uppercase; }
+  .red    { font-weight:700; font-size:19px; fill:#c07a54; letter-spacing:.06em; text-transform:uppercase; }
   .vsm    { font-family:'Fraunces', Georgia, serif; font-style:italic; font-size:16px; fill:#c9c0aa; }
   .axis   { font-weight:600; font-size:13px; fill:#c9c0aa; letter-spacing:.14em; }
 
@@ -73,122 +75,153 @@
   <div class="ref">Isaiah 38:5 &middot; KJV</div>
 
   <div class="pic">
-  <svg viewBox="0 0 1400 720" role="img" aria-label="Hezekiah's fifteen added years carrying the line of David to Jesus">
-    <g transform="translate(0,0)">
+  <svg viewBox="0 0 1400 780" role="img" aria-label="Hezekiah's fifteen added years carrying the line of David to Jesus">
 
-    <!-- ===================== HEZEKIAH'S LIFELINE (top half) ===================== -->
-    <text class="big" x="700" y="52" text-anchor="middle">Hezekiah's Lifeline &mdash; 54 Years</text>
-    <text class="vsm" x="700" y="76" text-anchor="middle">&#8220;Twenty and five years old was he when he began to reign; and he reigned twenty and nine years&#8221; &#8212; 2 Kings 18:2</text>
+    <!-- ===================== HEZEKIAH'S LIFELINE (top) ===================== -->
+    <text class="big" x="700" y="36" text-anchor="middle">Hezekiah's Lifeline &mdash; 54 Years</text>
+    <text class="vsm" x="700" y="60" text-anchor="middle">&#8220;Twenty and five years old was he when he began to reign; and he reigned twenty and nine years&#8221; &#8212; 2 Kings 18:2</text>
 
-    <!-- bar: x 160..1240 maps years 0..54 ; scale = 20px/yr ; 39yr -> x=940 -->
-    <!-- life before: 0-39 -->
-    <rect x="160" y="120" width="780" height="16" rx="8" fill="none" stroke="#c9c0aa" stroke-width="2"/>
-    <!-- added 15: 39-54 gold -->
-    <rect x="940" y="120" width="300" height="16" rx="8" fill="#c9a24b"/>
+    <!-- death-sentence label lane: LEFT of the marker, no overlap -->
+    <text class="red" x="924" y="102" text-anchor="end">&#8220;Set thine house in order&#8221;</text>
+    <text class="sub" x="924" y="121" text-anchor="end">Sick unto death at 39 &mdash; Isa. 38:1</text>
+    <line x1="940" y1="94" x2="940" y2="132" stroke="#c07a54" stroke-width="3" stroke-linecap="round"/>
 
-    <!-- axis ticks -->
+    <!-- +15 bracket lane: RIGHT of the marker -->
+    <path d="M952 122 C 952 114, 960 112, 968 112 L1224 112 C 1232 112, 1240 114, 1240 122" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="subg" x="1096" y="104" text-anchor="middle" style="font-size:15px;">+ 15 YEARS &mdash; Isa. 38:5</text>
+
+    <!-- bar: x 160..1240 maps years 0..54 ; 39yr -> x=940 -->
+    <rect x="160" y="132" width="780" height="16" rx="8" fill="none" stroke="#c9c0aa" stroke-width="2"/>
+    <rect x="940" y="132" width="300" height="16" rx="8" fill="#c9a24b"/>
+
     <g stroke="#6f6a5c" stroke-width="1.6">
-      <line x1="160" y1="140" x2="160" y2="150"/>
-      <line x1="660" y1="140" x2="660" y2="150"/>
-      <line x1="940" y1="140" x2="940" y2="150"/>
-      <line x1="1240" y1="140" x2="1240" y2="150"/>
+      <line x1="160" y1="152" x2="160" y2="162"/>
+      <line x1="660" y1="152" x2="660" y2="162"/>
+      <line x1="940" y1="152" x2="940" y2="162"/>
+      <line x1="1240" y1="152" x2="1240" y2="162"/>
     </g>
-    <text class="axis" x="160" y="168" text-anchor="middle">BORN</text>
-    <text class="axis" x="660" y="168" text-anchor="middle">AGE 25 &middot; CROWNED KING</text>
-    <text class="axis" x="940" y="168" text-anchor="middle">AGE 39</text>
-    <text class="axis" x="1240" y="168" text-anchor="middle">AGE 54</text>
+    <text class="axis" x="160" y="182" text-anchor="middle">BORN</text>
+    <text class="axis" x="660" y="182" text-anchor="middle">AGE 25 &middot; CROWNED KING</text>
+    <text class="axis" x="940" y="182" text-anchor="middle">AGE 39</text>
+    <text class="axis" x="1240" y="182" text-anchor="middle">AGE 54</text>
 
-    <!-- the death sentence marker at 39 -->
-    <g stroke="#c07a54" stroke-width="3" stroke-linecap="round">
-      <line x1="940" y1="96" x2="940" y2="120"/>
-    </g>
-    <text class="big" x="940" y="66" text-anchor="middle" fill="#c07a54" style="fill:#c07a54;">&#8220;Set thine house in order&#8221;</text>
-    <text class="sub" x="940" y="86" text-anchor="middle">Sick unto death at 39 &mdash; Isa. 38:1</text>
-
-    <!-- Manasseh birth star at ~42 => x = 940 + 3*20 = 1000 -->
+    <!-- Manasseh birth star at ~42 => x=1000 -->
+    <line x1="1000" y1="152" x2="1000" y2="206" stroke="#c9a24b" stroke-width="1.6" stroke-dasharray="4 4"/>
     <g fill="#f1e9d6">
-      <path d="M1000 196 L1005 210 L1020 210 L1008 219 L1013 234 L1000 225 L987 234 L992 219 L980 210 L995 210 Z"/>
+      <path d="M1000 210 L1005 224 L1020 224 L1008 233 L1013 248 L1000 239 L987 248 L992 233 L980 224 L995 224 Z"/>
     </g>
-    <line x1="1000" y1="140" x2="1000" y2="192" stroke="#c9a24b" stroke-width="1.6" stroke-dasharray="4 4"/>
-    <text class="big" x="1000" y="262" text-anchor="middle">Manasseh is born</text>
-    <text class="sub" x="1000" y="282" text-anchor="middle">~3 years INSIDE the added fifteen</text>
-    <text class="subg" x="1000" y="300" text-anchor="middle">12 at succession &mdash; 2 Kings 21:1</text>
-
-    <!-- gold bracket over added years -->
-    <path d="M940 108 C 940 100, 948 98, 956 98 L1224 98 C 1232 98, 1240 100, 1240 108" fill="none" stroke="#c9a24b" stroke-width="2"/>
-    <text class="subg" x="1090" y="90" text-anchor="middle" style="font-size:15px;">+ 15 YEARS &mdash; Isa. 38:5</text>
+    <text class="nm-md" x="1000" y="276" text-anchor="middle">Manasseh is born</text>
+    <text class="sub" x="1000" y="296" text-anchor="middle">~3 years INSIDE the added fifteen</text>
+    <text class="subg" x="1000" y="314" text-anchor="middle">12 at succession &mdash; 2 Kings 21:1</text>
 
     <!-- what-if note, left side -->
-    <text class="sub" x="160" y="216" text-anchor="start">If he had died at 39:</text>
-    <text class="sub" x="160" y="234" text-anchor="start">no heir had yet been born &mdash;</text>
-    <text class="subg" x="160" y="252" text-anchor="start">the royal line stops here.</text>
-    <path d="M420 236 C 520 246, 640 252, 780 252" fill="none" stroke="#6f6a5c" stroke-width="1.4" stroke-dasharray="5 5" marker-end="none"/>
-    <path d="M780 252 L768 246 M780 252 L768 258" fill="none" stroke="#6f6a5c" stroke-width="1.4"/>
+    <text class="sub" x="160" y="230" text-anchor="start">If he had died at 39:</text>
+    <text class="sub" x="160" y="248" text-anchor="start">no heir had yet been born &mdash;</text>
+    <text class="subg" x="160" y="266" text-anchor="start">the royal line stops here.</text>
+    <path d="M420 250 C 520 260, 620 266, 760 266" fill="none" stroke="#6f6a5c" stroke-width="1.4" stroke-dasharray="5 5"/>
+    <path d="M760 266 L748 260 M760 266 L748 272" fill="none" stroke="#6f6a5c" stroke-width="1.4"/>
 
-    <!-- ===================== THE LINE OF DAVID (bottom half) ===================== -->
-    <text class="big" x="700" y="368" text-anchor="middle">The Line of David &mdash; Through the Added Years &mdash; To the Messiah</text>
-    <text class="vsm" x="700" y="392" text-anchor="middle">&#8220;And Ezekias begat Manasses&#8230;&#8221; &#8212; Matthew 1:10</text>
+    <!-- ===================== THE LINE: JESSE TO JESUS ===================== -->
+    <text class="big" x="700" y="392" text-anchor="middle">From the Stem of Jesse &mdash; Through the Added Years &mdash; To the Messiah</text>
+    <text class="vsm" x="700" y="416" text-anchor="middle">&#8220;And there shall come forth a rod out of the stem of Jesse&#8230;&#8221; &#8212; Isa. 11:1 &nbsp;&middot;&nbsp; &#8220;And Ezekias begat Manasses&#8221; &#8212; Matt. 1:10</text>
 
     <!-- thread -->
-    <path d="M120 470 C 300 456, 520 484, 700 470 C 880 456, 1100 484, 1290 470" fill="none" stroke="#c9a24b" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M90 520 C 300 508, 520 532, 700 520 C 880 508, 1100 532, 1315 520" fill="none" stroke="#c9a24b" stroke-width="2.4" stroke-linecap="round"/>
 
-    <!-- nodes -->
-    <!-- David -->
-    <circle cx="150" cy="468" r="7" fill="#c9a24b"/>
-    <text class="nm" x="150" y="516" text-anchor="middle">David</text>
-    <text class="sub" x="150" y="536" text-anchor="middle">the covenant king</text>
-    <text class="sub" x="150" y="554" text-anchor="middle">2 Sam. 7:12&ndash;13</text>
+    <!-- JESSE -->
+    <circle cx="100" cy="519" r="6" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm-md" x="100" y="558" text-anchor="middle">Jesse</text>
+    <text class="sub" x="100" y="576" text-anchor="middle">the stem &middot; Isa. 11:1</text>
 
-    <!-- dots -->
-    <g fill="#a8873c"><circle cx="255" cy="464" r="3"/><circle cx="285" cy="463" r="3"/><circle cx="315" cy="463" r="3"/></g>
+    <!-- DAVID -->
+    <circle cx="185" cy="516" r="8" fill="#c9a24b"/>
+    <text class="nm-md" x="185" y="478" text-anchor="middle" style="fill:#c9a24b;">David</text>
+    <text class="sub" x="185" y="460" text-anchor="middle">2 Sam. 7:12&ndash;16</text>
 
-    <!-- Ahaz -->
-    <circle cx="400" cy="470" r="6" fill="none" stroke="#c9a24b" stroke-width="2"/>
-    <text class="nm" x="400" y="516" text-anchor="middle" style="font-size:20px;">Ahaz</text>
-    <text class="sub" x="400" y="536" text-anchor="middle">Matt. 1:9</text>
+    <!-- SOLOMON -->
+    <circle cx="272" cy="514" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="272" y="552" text-anchor="middle">Solomon</text>
+
+    <!-- REHOBOAM -->
+    <circle cx="352" cy="513" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="352" y="486" text-anchor="middle">Rehoboam</text>
+
+    <!-- ABIJAH -->
+    <circle cx="424" cy="514" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="424" y="552" text-anchor="middle">Abijah</text>
+
+    <!-- ASA -->
+    <circle cx="486" cy="516" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="486" y="486" text-anchor="middle">Asa</text>
+
+    <!-- JEHOSHAPHAT -->
+    <circle cx="560" cy="519" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="560" y="556" text-anchor="middle">Jehoshaphat</text>
+
+    <!-- JORAM -->
+    <circle cx="638" cy="521" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="638" y="488" text-anchor="middle">Joram</text>
+
+    <!-- three kings Matthew skips -->
+    <g fill="#a8873c"><circle cx="686" cy="521" r="3"/><circle cx="708" cy="521" r="3"/><circle cx="730" cy="520" r="3"/></g>
+    <text class="sub" x="708" y="556" text-anchor="middle" style="font-size:11.5px;">Ahaziah &middot; Joash &middot; Amaziah</text>
+    <text class="sub" x="708" y="571" text-anchor="middle" style="font-size:11px;">(Matthew passes over &mdash; 1 Chr. 3:11&ndash;12)</text>
+
+    <!-- UZZIAH -->
+    <circle cx="778" cy="518" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="778" y="486" text-anchor="middle">Uzziah</text>
+
+    <!-- JOTHAM -->
+    <circle cx="844" cy="515" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="844" y="552" text-anchor="middle">Jotham</text>
+
+    <!-- AHAZ -->
+    <circle cx="906" cy="513" r="5" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="906" y="484" text-anchor="middle">Ahaz</text>
 
     <!-- HEZEKIAH -->
-    <circle cx="580" cy="474" r="11" fill="#c9a24b"/>
-    <circle cx="580" cy="474" r="18" fill="none" stroke="#c9a24b" stroke-width="1.6" opacity=".55"/>
-    <text class="nm-g" x="580" y="522" text-anchor="middle">Hezekiah</text>
-    <text class="subg" x="580" y="542" text-anchor="middle">healed at 39 &middot; +15 years</text>
-    <text class="sub" x="580" y="560" text-anchor="middle">Isa. 38:5</text>
+    <circle cx="985" cy="513" r="11" fill="#c9a24b"/>
+    <circle cx="985" cy="513" r="18" fill="none" stroke="#c9a24b" stroke-width="1.6" opacity=".55"/>
+    <text class="nm-g" x="985" y="566" text-anchor="middle">Hezekiah</text>
+    <text class="subg" x="985" y="586" text-anchor="middle">healed at 39 &middot; +15 years &middot; Isa. 38:5</text>
 
-    <!-- gold glow segment Hezekiah->Manasseh -->
-    <path d="M591 473 C 650 466, 700 466, 749 470" fill="none" stroke="#c9a24b" stroke-width="6" stroke-linecap="round" opacity=".9"/>
-    <text class="subg" x="668" y="446" text-anchor="middle" style="font-size:14px;">born in the added years</text>
+    <!-- gold glow Hezekiah -> Manasseh -->
+    <path d="M996 513 C 1030 511, 1060 511, 1088 514" fill="none" stroke="#c9a24b" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+    <text class="subg" x="1042" y="490" text-anchor="middle" style="font-size:13px;">born in the added years</text>
 
-    <!-- Manasseh -->
-    <circle cx="760" cy="470" r="8" fill="#f1e9d6"/>
-    <text class="nm" x="760" y="516" text-anchor="middle">Manasseh</text>
-    <text class="sub" x="760" y="536" text-anchor="middle">2 Kgs. 21:1 &middot; Matt. 1:10</text>
+    <!-- MANASSEH -->
+    <circle cx="1098" cy="515" r="8" fill="#f1e9d6"/>
+    <text class="nm-md" x="1098" y="464" text-anchor="middle">Manasseh</text>
+    <text class="sub" x="1098" y="446" text-anchor="middle">Matt. 1:10</text>
 
-    <!-- dots -->
-    <g fill="#a8873c"><circle cx="860" cy="474" r="3"/><circle cx="890" cy="475" r="3"/><circle cx="920" cy="476" r="3"/></g>
-    <text class="sub" x="890" y="446" text-anchor="middle">Josiah &middot; the exile &middot; Zerubbabel &#8230;</text>
+    <!-- dots to exile -->
+    <g fill="#a8873c"><circle cx="1150" cy="518" r="3"/><circle cx="1172" cy="519" r="3"/><circle cx="1194" cy="520" r="3"/></g>
+    <text class="sub" x="1172" y="556" text-anchor="middle" style="font-size:11.5px;">Josiah &middot; the exile &middot; Zerubbabel &#8230;</text>
 
-    <!-- Joseph & Mary -->
-    <circle cx="1010" cy="476" r="6" fill="none" stroke="#c9a24b" stroke-width="2"/>
-    <text class="nm" x="1010" y="522" text-anchor="middle" style="font-size:20px;">Joseph &amp; Mary</text>
-    <text class="sub" x="1010" y="542" text-anchor="middle">Matt. 1:16</text>
+    <!-- JOSEPH & MARY -->
+    <circle cx="1240" cy="521" r="6" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <text class="nm" x="1240" y="490" text-anchor="middle">Joseph &amp; Mary</text>
+    <text class="sub" x="1240" y="473" text-anchor="middle">Matt. 1:16</text>
 
     <!-- JESUS -->
     <g fill="#c9a24b">
-      <path d="M1210 430 L1218 452 L1242 452 L1223 466 L1230 490 L1210 476 L1190 490 L1197 466 L1178 452 L1202 452 Z"/>
+      <path d="M1330 486 L1338 508 L1362 508 L1343 522 L1350 546 L1330 532 L1310 546 L1317 522 L1298 508 L1322 508 Z"/>
     </g>
-    <circle cx="1210" cy="468" r="30" fill="none" stroke="#c9a24b" stroke-width="1.4" opacity=".5"/>
-    <text class="nm-j" x="1210" y="540" text-anchor="middle">Jesus</text>
-    <text class="subg" x="1210" y="562" text-anchor="middle">the Son of David &mdash; Matt. 1:1</text>
+    <circle cx="1330" cy="522" r="30" fill="none" stroke="#c9a24b" stroke-width="1.4" opacity=".5"/>
+    <text class="nm-j" x="1310" y="596" text-anchor="middle">Jesus</text>
+    <text class="subg" x="1310" y="618" text-anchor="middle">the Son of David &mdash; Matt. 1:1</text>
 
-    <!-- closing line -->
-    <text class="vsm" x="700" y="636" text-anchor="middle" style="font-size:19px;">&#8220;The living, the living, he shall praise thee&#8230; the father to the children shall make known thy truth.&#8221;</text>
-    <text class="axis" x="700" y="662" text-anchor="middle">ISAIAH 38:19 &middot; KJV</text>
-    <text class="sub" x="700" y="694" text-anchor="middle" style="font-size:15px;">God did not only add years to a life &mdash; He preserved the road to the Messiah inside them.</text>
+    <!-- royal-span bracket -->
+    <path d="M185 640 C 185 650, 193 652, 201 652 L969 652 C 977 652, 985 650, 985 640" fill="none" stroke="#a8873c" stroke-width="1.6" opacity=".8"/>
+    <text class="axis" x="585" y="676" text-anchor="middle">DAVID TO HEZEKIAH &mdash; 13 GENERATIONS &middot; &#8776; 300 YEARS &middot; ONE UNBROKEN PROMISE</text>
 
-    </g>
+    <!-- closing -->
+    <text class="vsm" x="700" y="722" text-anchor="middle" style="font-size:18px;">&#8220;The living, the living, he shall praise thee&#8230; the father to the children shall make known thy truth.&#8221; &mdash; Isa. 38:19</text>
+    <text class="sub" x="700" y="754" text-anchor="middle" style="font-size:15px;">God did not only add years to a life &mdash; He preserved the road to the Messiah inside them.</text>
+
   </svg>
   </div>
 
-  <div class="foot"><span>2 Kings 18:2 &middot; Isaiah 38:1&ndash;5 &middot; 2 Kings 21:1 &middot; Matthew 1:10</span><span>Glory to God alone</span></div>
+  <div class="foot"><span>Isa. 11:1 &middot; 2 Kings 18:2 &middot; Isaiah 38:1&ndash;5 &middot; 2 Kings 21:1 &middot; Matthew 1:1&ndash;16</span><span>Glory to God alone</span></div>
 </body>
 </html>
