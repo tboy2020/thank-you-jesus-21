@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You Jesus — 21 Times</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Fraunces:ital,wght@0,400;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --night:#12140e; --gold:#c9a24b; --goldsoft:#a8873c;
+    --cream:#f1e9d6; --creamdim:#c9c0aa; --olive:#7c8a52;
+    --line:rgba(201,162,75,.28);
+  }
+  html, body { height:100%; }
+  body {
+    background:
+      radial-gradient(1000px 700px at 50% 30%, rgba(201,162,75,.10), transparent 65%),
+      var(--night);
+    color:var(--cream);
+    font-family:'Inter', Arial, sans-serif;
+    overflow:hidden;
+    -webkit-user-select:none; user-select:none;
+  }
+  #stage {
+    height:100%;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:20px;
+    position:relative;
+  }
+  .eyebrow {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:600; letter-spacing:.34em; text-transform:uppercase;
+    font-size:clamp(12px, 1.5vw, 17px); color:var(--gold);
+  }
+  .title {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    font-size:clamp(36px, 6vw, 78px); line-height:1.05;
+    margin:8px 0 4px;
+  }
+  .verse {
+    font-family:'Fraunces', Georgia, serif; font-style:italic;
+    font-size:clamp(14px, 1.9vw, 21px); color:var(--creamdim);
+    max-width:820px; margin-bottom:6px;
+  }
+  .ringwrap { position:relative; width:min(48vh, 74vw); height:min(48vh, 74vw); margin:10px 0; }
+  .ringwrap svg { width:100%; height:100%; display:block; }
+  .num {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .num .n {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:700; line-height:.9;
+    font-size:min(24vh, 32vw);
+    color:var(--cream);
+    transition:transform .12s ease;
+  }
+  .num .of {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:600; letter-spacing:.3em; text-transform:uppercase;
+    font-size:clamp(12px, 1.7vw, 18px); color:var(--creamdim);
+    margin-top:4px;
+  }
+  .pop { transform:scale(1.16); }
+  .controls {
+    display:flex; gap:14px; align-items:center; justify-content:center;
+    margin:6px 0 8px; flex-wrap:wrap;
+  }
+  .btn {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+    font-size:clamp(14px, 1.8vw, 19px);
+    color:var(--night); background:var(--gold);
+    border:none; border-radius:3px;
+    padding:12px 30px 10px;
+    cursor:pointer;
+  }
+  .btn:hover { background:#dab55e; }
+  .btn.ghost {
+    background:transparent; color:var(--gold);
+    border:1px solid var(--line);
+    padding:11px 18px 9px;
+    font-size:clamp(12px, 1.5vw, 16px);
+  }
+  .pace {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+    font-size:clamp(11px, 1.4vw, 14px); color:var(--creamdim);
+    min-width:120px;
+  }
+  .hint {
+    font-family:'Saira Condensed', Arial, sans-serif;
+    font-weight:500; letter-spacing:.24em; text-transform:uppercase;
+    font-size:clamp(10px, 1.3vw, 14px); color:rgba(201,192,170,.6);
+  }
+  .done .title { color:var(--gold); }
+  #hallelujah {
+    display:none;
+    font-family:'Fraunces', Georgia, serif; font-style:italic;
+    font-size:clamp(28px, 4.6vw, 54px); color:var(--gold); margin-top:2px;
+  }
+  #confetti { position:fixed; inset:0; pointer-events:none; }
+  @media (prefers-reduced-motion: reduce) { .num .n { transition:none; } }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div id="stage">
+  <div class="eyebrow">Winners Chapel International Columbus</div>
+  <div class="title" id="titleText">Shout: Thank You Jesus!</div>
+  <div class="verse">&ldquo;Oh that men would praise the LORD for his goodness, and for his wonderful works to the children of men!&rdquo; &mdash; Psalm 107:8, KJV</div>
+
+  <div class="ringwrap">
+    <svg viewBox="0 0 200 200" id="ring"></svg>
+    <div class="num">
+      <div class="n" id="count">0</div>
+      <div class="of">of 21</div>
+    </div>
+  </div>
+
+  <div id="hallelujah">Hallelujah! Twenty-one shouts of praise!</div>
+
+  <div class="controls" id="controls">
+    <button class="btn ghost" id="slowerBtn" type="button">Slower</button>
+    <button class="btn" id="autoBtn" type="button">Begin the Count</button>
+    <button class="btn ghost" id="fasterBtn" type="button">Faster</button>
+    <div class="pace" id="paceText">Every 2.2 sec</div>
+  </div>
+
+  <div class="hint" id="hint">Auto counts for you &middot; Space = pause / resume &middot; B = back &middot; R = reset &middot; Click number to count by hand</div>
+</div>
+
+<script>
+(function () {
+  var TOTAL = 21;
+  var count = 0;
+  var auto = false;
+  var timer = null;
+  var pace = 2200; // ms per count
+  var PACE_MIN = 1200, PACE_MAX = 4000, PACE_STEP = 200;
+
+  var ring = document.getElementById('ring');
+  var countEl = document.getElementById('count');
+  var titleEl = document.getElementById('titleText');
+  var hallEl = document.getElementById('hallelujah');
+  var hintEl = document.getElementById('hint');
+  var autoBtn = document.getElementById('autoBtn');
+  var slowerBtn = document.getElementById('slowerBtn');
+  var fasterBtn = document.getElementById('fasterBtn');
+  var paceText = document.getElementById('paceText');
+  var controls = document.getElementById('controls');
+  var dots = [];
+
+  var i, angle, cx, cy, dot, R = 88;
+  for (i = 0; i < TOTAL; i++) {
+    angle = (i / TOTAL) * Math.PI * 2 - Math.PI / 2;
+    cx = 100 + R * Math.cos(angle);
+    cy = 100 + R * Math.sin(angle);
+    dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', cx);
+    dot.setAttribute('cy', cy);
+    dot.setAttribute('r', 5);
+    dot.setAttribute('fill', 'none');
+    dot.setAttribute('stroke', 'rgba(201,162,75,.4)');
+    dot.setAttribute('stroke-width', '1.6');
+    ring.appendChild(dot);
+    dots.push(dot);
+  }
+  var guide = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  guide.setAttribute('cx', 100); guide.setAttribute('cy', 100);
+  guide.setAttribute('r', R);
+  guide.setAttribute('fill', 'none');
+  guide.setAttribute('stroke', 'rgba(201,162,75,.14)');
+  guide.setAttribute('stroke-width', '1');
+  ring.insertBefore(guide, ring.firstChild);
+
+  function paceLabel() {
+    paceText.textContent = 'Every ' + (pace / 1000).toFixed(1) + ' sec';
+  }
+
+  function render() {
+    var j;
+    countEl.textContent = String(count);
+    for (j = 0; j < TOTAL; j++) {
+      if (j < count) {
+        dots[j].setAttribute('fill', '#c9a24b');
+        dots[j].setAttribute('stroke', '#c9a24b');
+        dots[j].setAttribute('r', 6);
+      } else {
+        dots[j].setAttribute('fill', 'none');
+        dots[j].setAttribute('stroke', 'rgba(201,162,75,.4)');
+        dots[j].setAttribute('r', 5);
+      }
+    }
+    if (count >= TOTAL) {
+      stopAuto();
+      document.body.className = 'done';
+      titleEl.textContent = 'Thank You Jesus!';
+      hallEl.style.display = 'block';
+      controls.style.display = 'none';
+      hintEl.textContent = 'R = reset for another round';
+      burst();
+    } else {
+      document.body.className = '';
+      titleEl.textContent = 'Shout: Thank You Jesus!';
+      hallEl.style.display = 'none';
+      controls.style.display = 'flex';
+    }
+  }
+
+  function popNumber() {
+    countEl.className = 'n pop';
+    setTimeout(function () { countEl.className = 'n'; }, 140);
+  }
+
+  function up() { if (count < TOTAL) { count++; popNumber(); render(); } }
+  function down() { if (count > 0) { count--; render(); } }
+  function reset() {
+    stopAuto();
+    count = 0;
+    hintEl.textContent = 'Auto counts for you \u00B7 Space = pause / resume \u00B7 B = back \u00B7 R = reset \u00B7 Click number to count by hand';
+    render();
+  }
+
+  function startAuto() {
+    if (count >= TOTAL) return;
+    auto = true;
+    autoBtn.textContent = 'Pause';
+    timer = setInterval(function () {
+      up();
+      if (count >= TOTAL) stopAuto();
+    }, pace);
+  }
+  function stopAuto() {
+    auto = false;
+    autoBtn.textContent = (count > 0 && count < TOTAL) ? 'Resume' : 'Begin the Count';
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+  function toggleAuto() { if (auto) { stopAuto(); } else { startAuto(); } }
+
+  function restartTimerIfAuto() {
+    if (auto) { clearInterval(timer); timer = setInterval(function () { up(); if (count >= TOTAL) stopAuto(); }, pace); }
+  }
+  function slower() { if (pace < PACE_MAX) { pace += PACE_STEP; paceLabel(); restartTimerIfAuto(); } }
+  function faster() { if (pace > PACE_MIN) { pace -= PACE_STEP; paceLabel(); restartTimerIfAuto(); } }
+
+  autoBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleAuto(); });
+  slowerBtn.addEventListener('click', function (e) { e.stopPropagation(); slower(); });
+  fasterBtn.addEventListener('click', function (e) { e.stopPropagation(); faster(); });
+
+  // click the ring/number area to count by hand
+  document.querySelector('.ringwrap').addEventListener('click', function () { up(); });
+
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === ' ' || k === 'Enter') { e.preventDefault(); toggleAuto(); }
+    else if (k === 'ArrowRight' || k === 'ArrowUp') { e.preventDefault(); up(); }
+    else if (k === 'b' || k === 'B' || k === 'ArrowLeft' || k === 'ArrowDown' || k === 'Backspace') { e.preventDefault(); down(); }
+    else if (k === 'r' || k === 'R') { reset(); }
+    else if (k === '[') { slower(); }
+    else if (k === ']') { faster(); }
+  });
+
+  // ---- confetti ----
+  var canvas = document.getElementById('confetti');
+  var ctx = canvas.getContext('2d');
+  var pieces = [];
+  var running = false;
+  var COLORS = ['#c9a24b', '#f1e9d6', '#7c8a52', '#a8873c', '#e0c98a'];
+
+  function sizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+
+  function burst() {
+    var n, p;
+    for (n = 0; n < 170; n++) {
+      p = {
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * canvas.height * 0.4,
+        w: 6 + Math.random() * 7,
+        h: 8 + Math.random() * 9,
+        vy: 2 + Math.random() * 3.2,
+        vx: -1.4 + Math.random() * 2.8,
+        rot: Math.random() * Math.PI,
+        vr: -0.12 + Math.random() * 0.24,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+      };
+      pieces.push(p);
+    }
+    if (!running) { running = true; tick(); }
+  }
+
+  function tick() {
+    var j, p, alive = [];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (j = 0; j < pieces.length; j++) {
+      p = pieces[j];
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      if (p.y < canvas.height + 30) {
+        alive.push(p);
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+    }
+    pieces = alive;
+    if (pieces.length > 0) {
+      requestAnimationFrame(tick);
+    } else {
+      running = false;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  paceLabel();
+  render();
+})();
+</script>
+</body>
+</html>
